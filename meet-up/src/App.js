@@ -1,8 +1,7 @@
 import { Route, Switch } from "react-router";
 import AllMeetupsPage from "./pages/AllMeetups";
 import FavoritesPage from "./pages/Favorites";
-import NewMeetUpPage from "./pages/NewMeetup";
-import MainNavigation from "./components/layout/MainNavigation"; 
+import NewMeetUpPage from "./pages/NewMeetup"; 
 import Layout from "./components/layout/Layout";
 //Route Component renders everything it matches in the path
 //ex: /favorites path will match routes with path / as well as /favorites so it will
