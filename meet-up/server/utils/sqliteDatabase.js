@@ -1,6 +1,10 @@
 const sqlite3 = require('sqlite3');
 
-export class AppDB{
+/**
+ * Below webpage is tutorial of using sqlite3
+ * https://stackabuse.com/a-sqlite-tutorial-with-node-js/
+ **/
+class AppDB{
     constructor(dbFilePath){
         this.db = new sqlite3.Database(dbFilePath,(err) => {
             if (err) {
@@ -12,24 +16,34 @@ export class AppDB{
     }
 
     runCommand(sqlCommand,params){
-        this.db.run(sqlCommand,params,(err) => {
-            if(err){
-                console.log("ERROR!",err);
-            }
+        return new Promise((resolve,reject) => { 
+            this.db.run(sqlCommand,params,(err) => {
+                if(err){
+                    console.log("ERROR!",err);
+                    reject(err);
+                }else{
+                    resolve("success");
+                }
+            });
         });
     }
 
     createTheTable(tableCommand){
-        this.db.run(tableCommand,(err) => {
-            if(err){
-                console.log("ERROR!",err);
-            }
+        return new Promise((resolve,reject) => {
+            this.db.run(tableCommand,(err) => {
+                if(err){
+                    console.log("ERROR!",err);
+                    reject(err);
+                }else{
+                    resolve("success");
+                }
+            });
         });
     }
 
     getData(sqlcommand,params=[]){
         return new Promise((resolve,reject) => {
-            this.db.get(sqlcommand, params, (err, result) => {
+            this.db.all(sqlcommand, params, (err, result) => {
                 if (err) {
                 console.log(err)
                 reject(err);
@@ -41,3 +55,6 @@ export class AppDB{
         });
     }
 }
+
+module.exports = AppDB;
+

@@ -20,7 +20,8 @@ export default function NewMeetupForm(props){
             image: imageInputRef.current.value,
             description: descriptionInputRef.current.value
         };
-        console.log(meetUpData);
+        //console.log(meetUpData);
+        props.onAddMeetup(meetUpData);
     }
     return (
         <Card>

@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const meetUpControler = require('../controller/meetup.controller.js');
 
-router.get('/', meetUpControler.getMeetupDetails);
+router.get('/:id', meetUpControler.getMeetupDetails);
+
+router.get('/', meetUpControler.getAllMeetups);
 
 router.post('/', meetUpControler.addMeetupDetails);
 
 router.put('/', meetUpControler.addMeetupDetails);
 
-router.delete('/', meetUpControler.deleteMeetupDetails);
+router.delete('/:id', meetUpControler.deleteMeetupDetails);
 
-exports = router;
+module.exports = router;
