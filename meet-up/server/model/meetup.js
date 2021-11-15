@@ -1,7 +1,5 @@
 class Meetup{
 
-    static dbConnection = null;
-
     constructor(title,address,image,description,id = 0){
         this.id = id;
         this.Title = title; 
@@ -28,5 +26,5 @@ class Meetup{
         Meetup.dbConnection.runCommand("Delete from meetup where id = ?",[id]);
     }
 }
-
+Meetup.dbConnection = null;
 module.exports = Meetup;
