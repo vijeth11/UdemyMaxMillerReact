@@ -9,8 +9,8 @@ class Meetup{
     }
 
     saveMeetup(){
-        console.log(Object.values(this).filter(val => val != 0));
-        return Meetup.dbConnection.runCommand("Insert into meetup (title,address,image,description) values (?,?,?,?)",Object.values(this).filter(val => val != 0));
+        console.log(Object.values(this).filter(val => val !== 0));
+        return Meetup.dbConnection.runCommand("Insert into meetup (title,address,image,description) values (?,?,?,?)",Object.values(this).filter(val => val !== 0));
     }
 
     static getMeetupById(id){
